@@ -1,8 +1,0 @@
-# Repo
-!.gitignore
-!README.md
-!LICENSE
-
-# Build 
-!*.patch
-!PKGBUILD

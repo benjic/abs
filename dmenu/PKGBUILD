@@ -13,8 +13,9 @@ url="http://tools.suckless.org/dmenu/"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('sh' 'libxinerama' 'libxft' 'freetype2')
-source=("http://dl.suckless.org/tools/dmenu-$pkgver.tar.gz")
-md5sums=('6fedf081133bc0725cb040b3b8ac3fac')
+source=("http://dl.suckless.org/tools/dmenu-$pkgver.tar.gz" "custom-config.patch")
+md5sums=('6fedf081133bc0725cb040b3b8ac3fac' '69a46fdc4f37c02d4f4964ba878fc9b0')
+groups=('modified')
 
 build() {
   cd $pkgname-$pkgver
@@ -25,4 +26,9 @@ package() {
   cd $pkgname-$pkgver
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p0 -i "${srcdir}/custom-config.patch"
 }

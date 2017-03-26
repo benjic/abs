@@ -1,0 +1,24 @@
+--- config.def.h	2015-11-08 15:42:21.000000000 -0700
++++ config.def.h.patch	2017-03-25 20:36:30.600782450 -0600
+@@ -4,14 +4,14 @@
+ static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+ /* -fn option overrides fonts[0]; default X11 font or font set */
+ static const char *fonts[] = {
+-	"monospace:size=10"
++        "xft:Source Code Pro:pixelsize=13:Medium"
+ };
+ static const char *prompt      = NULL;      /* -p  option; prompt to the elft of input field */
+-static const char *normbgcolor = "#222222"; /* -nb option; normal background                 */
+-static const char *normfgcolor = "#bbbbbb"; /* -nf option; normal foreground                 */
+-static const char *selbgcolor  = "#005577"; /* -sb option; selected background               */
+-static const char *selfgcolor  = "#eeeeee"; /* -sf option; selected foreground               */
+-static const char *outbgcolor  = "#00ffff";
+-static const char *outfgcolor  = "#000000";
++static const char *normbgcolor = "#331f4e"; /* -nb option; normal background                 */
++static const char *normfgcolor = "#586e75"; /* -nf option; normal foreground                 */
++static const char *selbgcolor  = "#331f4e"; /* -sb option; selected background               */
++static const char *selfgcolor  = "#cb4b16"; /* -sf option; selected foreground               */
++static const char *outbgcolor  = "#b58900";
++static const char *outfgcolor  = "#331f4e";
+ /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
+ static unsigned int lines      = 0;
