@@ -1,0 +1,59 @@
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Contributor: Pierre Chapuis <catwell at archlinux dot us>
+# Contributor: Ray Kohler <ataraxia937 at gmail dot com>
+# Contributor: Michael Witten <mfwitten>
+# Contributor: Raphael Proust <raphlalou at gmail dot com>
+
+pkgname=surf
+pkgver=0.7
+pkgrel=1
+pkgdesc='A simple web browser based on WebKit/GTK+.'
+arch=('i686' 'x86_64')
+url='http://surf.suckless.org/'
+license=('MIT')
+depends=('webkit2gtk' 'xorg-xprop')
+optdepends=('dmenu: URL-bar'
+            'ca-certificates: SSL verification'
+            'xterm: default download handler'
+            'curl: default download handler')
+source=(
+  "http://dl.suckless.org/surf/surf-0.7.tar.gz" 
+  "http://surf.suckless.org/patches/surf-0.6-homepage.diff"
+  "http://surf.suckless.org/patches/surf-0.6-bookmarks.diff"
+  "http://surf.suckless.org/patches/surf-0.7-searchengines.diff"
+  "custom-config.patch"
+)
+md5sums=(
+  '45899435aeb5ce3af0a62909911b735f'
+  '8fd342cae180ba787248fbf54da52529'
+  '15731c499a40ca813130eef9af23fb6d'
+  '8201e8241789f035864e984ce06a68c1'
+  'e34becd39d1db8e464d8df4321f6b7cd'
+)
+groups=('modified')
+
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
+  sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
+  sed -i 's/LDFLAGS =/LDFLAGS +=/g' config.mk
+
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  echo "Applying custom patches"
+  patch -p1 -i "$srcdir/surf-0.6-homepage.diff"
+  patch -p1 -i "$srcdir/surf-0.7-searchengines.diff"
+  patch -p0 -i "$srcdir/custom-config.patch"
+}

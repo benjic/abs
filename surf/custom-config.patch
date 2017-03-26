@@ -1,0 +1,14 @@
+--- config.def.h	2017-03-26 00:50:45.046927287 -0600
++++ config.def.h.patch	2017-03-26 00:50:38.096901611 -0600
+@@ -6,6 +6,11 @@
+ static char *styledir       = "~/.surf/styles/";
+ static char *cachefolder    = "~/.surf/cache/";
+ 
++static SearchEngine searchengines[] = {
++  { "ddg", "https://duckduckgo.com/?q=%s"},
++  { "wiki", "https://en.wikipedia.org/w/index.php?search=%s"},
++};
++
+ static Bool kioskmode       = FALSE; /* Ignore shortcuts */
+ static Bool showindicators  = TRUE;  /* Show indicators in window title */
+ static Bool zoomto96dpi     = TRUE;  /* Zoom pages to always emulate 96dpi */
