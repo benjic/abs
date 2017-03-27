@@ -1,0 +1,15 @@
+--- config.def.h	2017-03-26 20:50:52.538106638 -0600
++++ config.def.h.patch	2017-03-26 20:52:30.511837074 -0600
+@@ -3,9 +3,9 @@
+ static const char *group = "nobody";
+ 
+ static const char *colorname[NUMCOLS] = {
+-	[INIT] =   "black",     /* after initialization */
+-	[INPUT] =  "#005577",   /* during input */
+-	[FAILED] = "#CC3333",   /* wrong password */
++	[INIT] =   "#000000",     /* after initialization */
++	[INPUT] =  "#331f4e",   /* during input */
++	[FAILED] = "#b58900",   /* wrong password */
+ };
+ 
+ /* treat a cleared input like a wrong password (color) */
