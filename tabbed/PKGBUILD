@@ -11,15 +11,13 @@ url='http://tools.suckless.org/tabbed'
 license=('custom:MIT/X')
 depends=('libx11')
 source=("http://dl.suckless.org/tools/${pkgname}-${pkgver}.tar.gz"
-        'config.h')
+        'config.def.h.patch')
 md5sums=('7898992feb9358e0196119750b77b42c'
-          '3dc3f4d2a0dfc375a77492d41fb45a74')
-groups('modified')
+         '11fa372cea8b2f2b2110bfbafc843837')
+groups=('modified')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  cp "${srcdir}/config.h" config.h
 
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/CFLAGS =/CFLAGS +=/g' config.mk
@@ -33,4 +31,9 @@ package() {
 
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p0 -i "$srcdir/config.def.h.patch"
 }

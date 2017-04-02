@@ -1,0 +1,19 @@
+--- config.def.h	2014-01-21 11:22:03.000000000 -0700
++++ config.def.h.patch	2017-03-28 20:22:14.554532697 -0600
+@@ -1,11 +1,11 @@
+ /* See LICENSE file for copyright and license details. */
+ 
+ /* appearance */
+-static const char font[]        = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*";
+-static const char* normbgcolor  = "#222222";
+-static const char* normfgcolor  = "#cccccc";
+-static const char* selbgcolor   = "#555555";
+-static const char* selfgcolor   = "#ffffff";
++static const char font[]        = "-*-inconsolata-medium-*-*-*-14-*-*-*-*-*-*-*";
++static const char* normbgcolor  = "#331f4e";
++static const char* normfgcolor  = "#cb4b16";
++static const char* selbgcolor   = "#331f4e";
++static const char* selfgcolor   = "#b58900";
+ static const char before[]      = "<";
+ static const char after[]       = ">";
+ static const int  tabwidth      = 200;
