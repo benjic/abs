@@ -1,0 +1,20 @@
+--- config.def.h	2017-03-28 10:17:45.000000000 -0600
++++ config.def.h.patch	2017-04-09 11:54:54.467748034 -0600
+@@ -23,14 +23,14 @@
+ 	SETB(LoadImages,         1),
+ 	SETB(MediaManualPlay,    0),
+ 	SETB(Plugins,            1),
+-	SETV(PreferredLanguages, ((char *[]){ NULL })),
++	SETV(PreferredLanguages, ((char *[]){ "en_US",  NULL })),
+ 	SETB(RunInFullscreen,    0),
+ 	SETB(ScrollBars,         1),
+ 	SETB(ShowIndicators,     1),
+ 	SETB(SiteQuirks,         1),
+-	SETB(SpellChecking,      0),
++	SETB(SpellChecking,      1),
+ 	SETV(SpellLanguages,     ((char *[]){ "en_US", NULL })),
+-	SETB(StrictSSL,          0),
++	SETB(StrictSSL,          1),
+ 	SETB(Style,              1),
+ 	SETF(ZoomLevel,          1.0),
+ };
